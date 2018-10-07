@@ -241,8 +241,8 @@ typedef struct Network Network;
 struct Network
 {
 	int my_socket;
-	int (*mqttread) (Network*, unsigned char*, int, int);
-	int (*mqttwrite) (Network*, unsigned char*, int, int);
+	int (*mqttread) (Network*, unsigned char*, int, long);
+	int (*mqttwrite) (Network*, unsigned char*, int, long);
 	void (*disconnect) (Network*);
 };
 
