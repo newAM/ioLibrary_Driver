@@ -52,7 +52,7 @@ extern "C" {
 /*
  * @brief 
  * @details If you want to display debug & processing message, Define _DHCP_DEBUG_ 
- * @note    If defined, it depends on <stdio.h>
+ * @note    If defined, it depends on io.h
  */
 //#define _DHCP_DEBUG_
 
