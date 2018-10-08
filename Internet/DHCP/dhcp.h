@@ -49,6 +49,8 @@
 extern "C" {
 #endif
 
+#include "shared.h" // device name
+
 /*
  * @brief 
  * @details If you want to display debug & processing message, Define _DHCP_DEBUG_ 
@@ -69,7 +71,7 @@ extern "C" {
 
 #define MAGIC_COOKIE             0x63825363  ///< You should not modify it number.
 
-#define DCHP_HOST_NAME           "ambient1\0"
+#define DCHP_HOST_NAME           DEVICE_NAME "\0"
 
 /* 
  * @brief return value of @ref DHCP_run()
