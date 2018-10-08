@@ -213,6 +213,7 @@ int main(void)
 #define __MQTT_INTERFACE_H_
 
 #include <stdint.h>
+#include "io.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -262,7 +263,7 @@ int w5x00_read(Network*, unsigned char*, int, long);
 int w5x00_write(Network*, unsigned char*, int, long);
 void w5x00_disconnect(Network*);
 void NewNetwork(Network* n, int sn);
-void ConnectNetwork(Network* n, uint8_t* ip, uint16_t port);
+uint8_t ConnectNetwork(Network* n, uint8_t* ip, uint16_t port);
 
 #ifdef __cplusplus
 }
