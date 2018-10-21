@@ -44,16 +44,6 @@
 #include "wizchip_conf.h"
 #include "socket.h"
 
-unsigned long MilliTimer;
-
-/*
- * @brief MQTT MilliTimer handler
- * @note MUST BE register to your system 1m Tick timer handler.
- */
-void MilliTimer_Handler(void) {
-	MilliTimer++;
-}
-
 /*
  * @brief Timer Initialize
  * @param  timer : pointer to a Timer structure
@@ -69,7 +59,7 @@ void TimerInit(Timer* timer) {
  *         that contains the configuration information for the Timer.
  */
 char TimerIsExpired(Timer* timer) {
-	long left = timer->end_time - MilliTimer;
+	long left = timer->end_time - HAL_GetTick();
 	return (left < 0);
 }
 
@@ -80,7 +70,7 @@ char TimerIsExpired(Timer* timer) {
  *         timeout : setting timeout millisecond.
  */
 void TimerCountdownMS(Timer* timer, unsigned int timeout) {
-	timer->end_time = MilliTimer + timeout;
+	timer->end_time = HAL_GetTick() + timeout;
 }
 
 /*
@@ -90,7 +80,7 @@ void TimerCountdownMS(Timer* timer, unsigned int timeout) {
  *         timeout : setting timeout millisecond.
  */
 void TimerCountdown(Timer* timer, unsigned int timeout) {
-	timer->end_time = MilliTimer + (timeout * 1000);
+	timer->end_time = HAL_GetTick() + (timeout * 1000);
 }
 
 /*
@@ -99,7 +89,7 @@ void TimerCountdown(Timer* timer, unsigned int timeout) {
  *         that contains the configuration information for the Timer.
  */
 int TimerLeftMS(Timer* timer) {
-	long left = timer->end_time - MilliTimer;
+	long left = timer->end_time - HAL_GetTick();
 	return (left < 0) ? 0 : left;
 }
 

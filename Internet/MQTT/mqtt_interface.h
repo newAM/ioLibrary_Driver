@@ -214,17 +214,11 @@ int main(void)
 
 #include <stdint.h>
 #include "io.h"
+#include "stm32f0xx_hal.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-
-/*
- * @brief MQTT MilliTimer handler
- * @note MUST BE register to your system 1m Tick timer handler
- */
-void MilliTimer_Handler(void);
 
 /*
  * @brief Timer structure
